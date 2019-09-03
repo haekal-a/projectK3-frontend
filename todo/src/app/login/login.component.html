@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <!--<form>
+        <H1>Welcome, Please Login to use this application</H1>
+        &lt;!&ndash;untuk memasukan dan mendapatkan data ke komponen, dapat menggunakan ngModel dengan konsep banana in the box&ndash;&gt;
+        &lt;!&ndash;menggunakan syntax tersebut, dan valuenya adalah variable sesuai pada kelas pada komponen&ndash;&gt;
+        <small *ngIf="invalidLogin == true">Bad Credentials</small>
+        <div class="col-md-12 form-group">
+          <label class="col-md-2 col-form-label">User Name</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="username" [(ngModel)]="username">
+          </div>
+        </div>
+        <div class="col-md-12 form-group">
+          <label class="col-md-2 col-form-label">Password</label>
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="password" [(ngModel)]="password">
+          </div>
+        </div>
+        <div class="col-md-12 form-group">
+          <div class="col-md-10">
+            &lt;!&ndash;ini adalah event binding, menggunakan event klik&ndash;&gt;
+            <button class="btn btn-primary" (click)=getUser()>Login</button>
+          </div>
+        </div>
+      </form>-->
+      <form>
+        <div class="col-md-12">
+          <H1>Welcome, Please Login to use this application</H1>
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="User Name" value="User Name" name="username" [(ngModel)]="username">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" value="Password" name="password" [(ngModel)]="password">
+            </mat-form-field>
+            <!--<button class="btn btn-primary" (click)=getUser()>Login</button>-->
+            <!--<button class="btn btn-primary" (click)=handleBasicAuthLogin()>Login</button>-->
+            <button class="btn btn-primary" (click)=handleJWTAuthLogin()>Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
