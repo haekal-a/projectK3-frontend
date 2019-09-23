@@ -1,0 +1,12 @@
+<div class="page-wrap" role="main">
+  <app-menu></app-menu>
+  <mat-progress-bar *ngIf="showLoadingIndicator" mode="indeterminate"></mat-progress-bar>
+  <br>
+  <!--ini adalah tag untuk routing antar komponen-->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+  <br>
+  <app-footer></app-footer>
+
+</div>
