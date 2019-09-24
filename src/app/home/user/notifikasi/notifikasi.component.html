@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Persetujuan Peminjaman</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p *ngIf="jumlahKasusPersetujuan != null">
+      Anda memiliki <strong> {{jumlahKasusPersetujuan}} </strong> permintaan peminjaman barang yang belum disetujui<br>
+      <a routerLink="/pinjam/setuju"> Klik disini</a> untuk mengetahui lebih lanjut.
+    </p>
+
+    <p *ngIf="jumlahKasusPersetujuan === null">
+      Kamu tidak memiliki kasus permohonan peminjaman barang untuk diproses.
+    </p>
+  </mat-card-content>
+</mat-card>

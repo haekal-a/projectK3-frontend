@@ -1,0 +1,20 @@
+<form [formGroup]="formTolak">
+  <h2 mat-dialog-title>{{data.title}}</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="col-md-12">
+      <p>{{data.message}}</p>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Alasan Penolakan" name="alasanPenolakan" formControlName="alasanPenolakan"></textarea>
+        <mat-error
+          *ngIf="!formTolak.get('alasanPenolakan').valid && formTolak.get('alasanPenolakan').touched">
+          Field ini tidak boleh kosong!
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Batal</button>
+    <button mat-button [mat-dialog-close]="true" (click)="onSubmit()" [disabled]="formTolak.invalid">Simpan</button>
+    <mat-spinner diameter="30" *ngIf="onProcess"></mat-spinner>
+  </mat-dialog-actions>
+</form>

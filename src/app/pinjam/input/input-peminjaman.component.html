@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-daftar-barang></app-daftar-barang>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-10">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Rekam Informasi Peminjaman</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="inputPeminjamanForm">
+            <mat-card *ngIf="inputPeminjamanForm.get('idBarang').value == null" [@animate1]>
+              <mat-card-header>
+                <mat-card-title>Perhatian</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                Silahkan pilih barang yang akan anda pinjam terlebih dahulu
+              </mat-card-content>
+            </mat-card>
+
+            <mat-form-field  class=" invisible example-full-width">
+              <input matInput placeholder="Id Barang" id="idBarang" formControlName="idBarang">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Nama Barang" id="namaBarang" formControlName="namaBarang" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Jenis Barang" id="jenisBarang" formControlName="jenisBarang" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Keterangan" id="keterangan" formControlName="keterangan" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Kondisi" id="kondisi" formControlName="kondisi" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Keperluan" id="keperluan" formControlName="keperluan">
+              <mat-error
+                *ngIf="!inputPeminjamanForm.get('keperluan').valid && inputPeminjamanForm.get('keperluan').touched">
+                Field ini tidak boleh kosong!
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="datepicker-width">
+              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="tanggalPinjam" placeholder="Tanggal Pinjam" id="tanggalPinjam"
+                     formControlName="tanggalPinjam" readonly>
+              <mat-datepicker-toggle matSuffix [for]="tanggalPinjam"></mat-datepicker-toggle>
+              <mat-datepicker #tanggalPinjam></mat-datepicker>
+              <mat-error
+                *ngIf="!inputPeminjamanForm.get('tanggalPinjam').valid && inputPeminjamanForm.get('tanggalPinjam').dirty">
+                Field ini tidak boleh kosong!
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="datepicker-width">
+              <input matInput  [matDatepickerFilter]="myFilter2" [matDatepicker]="tanggalJatuhTempo" placeholder="Tanggal Kembali" id="jatuhTempo"
+                     formControlName="jatuhTempo" readonly>
+              <mat-datepicker-toggle matSuffix [for]="tanggalJatuhTempo"></mat-datepicker-toggle>
+              <mat-datepicker #tanggalJatuhTempo></mat-datepicker>
+              <mat-error
+                *ngIf="!inputPeminjamanForm.get('jatuhTempo').valid && inputPeminjamanForm.get('jatuhTempo').dirty">
+                Field ini tidak boleh kosong!
+              </mat-error>
+            </mat-form-field>
+
+            <div class="offset-9">
+              <button mat-raised-button color="primary" type="button" [disabled]="inputPeminjamanForm.invalid" (click)="onSubmit()">{{editMode? "Ubah": "Simpan"}}
+              </button>
+              <button mat-raised-button (click)="onReset()" type="button" >{{editMode ? "Kembali" : "Reset"}}</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+

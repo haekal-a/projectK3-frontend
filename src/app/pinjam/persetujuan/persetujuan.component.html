@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Persetujuan Peminjaman</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Cari">
+          </mat-form-field>
+
+          <div class="mat-elevation-z8">
+            <mat-progress-bar mode="indeterminate" *ngIf="showLoad" ></mat-progress-bar>
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No.</th>
+                <td mat-cell *matCellDef="let i = index"> {{i + 1}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="jenisBarang">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Jenis Barang</th>
+                <td mat-cell *matCellDef="let element"> {{element.jenisBarang}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="namaBarang">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nama Barang</th>
+                <td mat-cell *matCellDef="let element"> {{element.namaBarang}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="namaPeminjam">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nama Peminjam</th>
+                <td mat-cell *matCellDef="let element"> {{element.namaPeminjam }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="tanggalPinjam">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tanggal Peminjaman</th>
+                <td mat-cell *matCellDef="let element"> {{element.tanggalPinjam | date: "dd/MM/yyyy" }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="jatuhTempoPengembalian">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tanggal Pengembalian</th>
+                <td mat-cell *matCellDef="let element"> {{element.jatuhTempoPengembalian | date: "dd/MM/yyyy" }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="keperluan">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Keperluan</th>
+                <td mat-cell *matCellDef="let element"> {{element.keperluan}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="aksi">
+                <th mat-header-cell *matHeaderCellDef> Aksi</th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-raised-button color="primary" (click)="setuju(element.idPeminjaman)">Setuju</button>
+                  <button mat-raised-button color="warn" (click)="tolak(element.idPeminjaman)">Tolak</button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

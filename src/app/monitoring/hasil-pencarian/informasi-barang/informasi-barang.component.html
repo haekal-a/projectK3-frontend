@@ -1,0 +1,35 @@
+<mat-card>
+  <form [formGroup]="form">
+    <mat-card-content style=" margin-top: 10px;">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Jenis Barang</mat-label>
+        <input matInput readonly formControlName="jenisBarang">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Nama Barang</mat-label>
+        <input matInput readonly formControlName="namaBarang">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Merk Barang</mat-label>
+        <input matInput readonly formControlName="merkBarang">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Keterangan</mat-label>
+        <input matInput readonly formControlName="keterangan">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Kondisi</mat-label>
+        <input matInput readonly formControlName="kondisi">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Tahun Pembelian</mat-label>
+        <input matInput readonly formControlName="tahunPembelian">
+      </mat-form-field>
+    </mat-card-content>
+  </form>
+</mat-card>

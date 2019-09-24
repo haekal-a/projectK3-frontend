@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <form [formGroup]="form">
+        <h4>Pencarian Barang</h4>
+        <hr>
+        <mat-form-field class="example-full-width">
+          <mat-label>Jenis Barang</mat-label>
+          <mat-select formControlName="jenisBarang">
+            <mat-option *ngFor="let barang of jenisBarang" [value]="barang.value">
+              {{barang.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">Cari</button>
+      </form>
+    </div>
+    <div class="col-md-9">
+      <app-hasil-pencarian></app-hasil-pencarian>
+    </div>
+  </div>
+</div>

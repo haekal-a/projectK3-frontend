@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row" *ngIf="role === 'admin'">
+    <div class="col-md-6">
+      <app-notifikasi></app-notifikasi>
+    </div>
+  </div>
+  <div class="row" *ngIf=" role === 'user'">
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Peminjaman Barang</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Kamu dapat mulai melakukan peminjaman barang dengan mengakses menu peminjaman barang pada toolbar
+            diatas.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Perhatian</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Jangan lupa untuk menjaga barang yang kamu pinjam dan selalu kembalikan tepat dengan waktunya.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+        <mat-tab label="Barang Yang Sedang Dipinjam">
+          <app-daftar-pinjam-user *ngIf=" role === 'user'"></app-daftar-pinjam-user>
+          <app-daftar-pinjam-admin *ngIf="role === 'admin'"></app-daftar-pinjam-admin>
+        </mat-tab>
+        <mat-tab label="Menunggu Konfirmasi">
+          <app-konfirmasi></app-konfirmasi>
+        </mat-tab>
+        <mat-tab label="Histori Peminjamanmu">
+          <app-histori-pinjam></app-histori-pinjam>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <hr>
+
+
+</div>

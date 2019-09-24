@@ -1,0 +1,20 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.datepicker-width {
+  width: 30%;
+}
+
+.invisible{
+  display: block;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}

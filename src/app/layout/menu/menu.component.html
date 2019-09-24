@@ -1,0 +1,33 @@
+<header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+<!--      <span>-->
+        <img src="../../../assets/logo.png" style="width: 100px; height: auto;">
+<!--      </span>-->
+      <span>
+      <button mat-button *ngIf="cekSession()" (click)="redirectToHome()"> Beranda</button>
+       <button mat-button *ngIf="cekSession() && role === 'admin'" routerLink="/monitoring"> Monitoring Barang</button>
+      <button mat-button [matMenuTriggerFor]="menupinjam" *ngIf="cekSession()">Peminjaman Barang
+        <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">arrow_drop_down</mat-icon>
+      </button>
+        <mat-menu #menupinjam="matMenu">
+            <button mat-menu-item routerLink="/pinjam/input">Input Peminjaman</button>
+            <div *ngIf="role === 'admin'">
+            <button mat-menu-item routerLink="/pinjam/setuju">Persetujuan Peminjaman</button>
+            <button mat-menu-item routerLink="/pinjam/kembali">Pengembalian Peminjaman</button>
+          </div>
+        </mat-menu>
+      </span>
+      <span class="example-spacer"></span>
+      <div id="infoUser" *ngIf="cekUser()">
+        <button mat-button>Hai, {{nama}}</button>
+        <button mat-button>{{unit}}</button>
+      </div>
+      <button mat-button *ngIf="cekSession()" routerLink="/logout">Log out</button>
+      <button mat-button routerLink="/register" *ngIf="!cekSession()">Register</button>
+      <button mat-button routerLink="/" *ngIf="!cekSession()">Login</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+
+
