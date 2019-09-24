@@ -92,7 +92,7 @@ export class InputPeminjamanComponent implements OnInit, OnDestroy {
       jenisBarang: new FormControl(null, Validators.required),
       keterangan: new FormControl(null, Validators.required),
       kondisi: new FormControl(null, Validators.required),
-      keperluan: new FormControl(null, Validators.required),
+      keperluan: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
       tanggalPinjam: new FormControl(null, Validators.required),
       jatuhTempo: new FormControl(null, Validators.required)
     });

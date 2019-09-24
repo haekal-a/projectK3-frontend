@@ -1,11 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {PeminjamanInputModel} from "../../model/PeminjamanInputModel";
-import {PersetujuanInputModel} from "../../model/PersetujuanInputModel";
-import {PersetujuanService} from "../../service/persetujuan.service";
-import {ERROR} from "../../app.constant";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {PersetujuanInputModel} from '../../model/PersetujuanInputModel';
+import {PersetujuanService} from '../../service/persetujuan.service';
+import {ERROR} from '../../app.constant';
 
 interface DialogData {
   id: number;
@@ -30,7 +29,7 @@ export class RejectDialogComponent implements OnInit {
 
   ngOnInit() {
     this.formTolak = new FormGroup({
-      'alasanPenolakan': new FormControl(null, Validators.required)
+      alasanPenolakan: new FormControl(null, [Validators.required, Validators.maxLength(150)])
     });
   }
 
@@ -46,11 +45,11 @@ export class RejectDialogComponent implements OnInit {
         this.onProcess = false;
         this.dialogRef.close();
 
-        let snackBarRef = this.snackBar.open(response.message, 'Tutup', {
+        const snackBarRef = this.snackBar.open(response.message, 'Tutup', {
           duration: 3000
         });
 
-        this.persetujuanService.successProcess.next(true)
+        this.persetujuanService.successProcess.next(true);
       }, error => {
         window.alert(ERROR);
         console.log(error);

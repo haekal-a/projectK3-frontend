@@ -22,7 +22,7 @@
               </mat-card-content>
             </mat-card>
 
-            <mat-form-field  class=" invisible example-full-width">
+            <mat-form-field class=" invisible example-full-width">
               <input matInput placeholder="Id Barang" id="idBarang" formControlName="idBarang">
             </mat-form-field>
 
@@ -43,7 +43,7 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Keperluan" id="keperluan" formControlName="keperluan">
+              <input matInput placeholder="Keperluan" id="keperluan" formControlName="keperluan" maxlength="100">
               <mat-error
                 *ngIf="!inputPeminjamanForm.get('keperluan').valid && inputPeminjamanForm.get('keperluan').touched">
                 Field ini tidak boleh kosong!
@@ -51,7 +51,8 @@
             </mat-form-field>
 
             <mat-form-field class="datepicker-width">
-              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="tanggalPinjam" placeholder="Tanggal Pinjam" id="tanggalPinjam"
+              <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="tanggalPinjam"
+                     placeholder="Tanggal Pinjam" id="tanggalPinjam"
                      formControlName="tanggalPinjam" readonly>
               <mat-datepicker-toggle matSuffix [for]="tanggalPinjam"></mat-datepicker-toggle>
               <mat-datepicker #tanggalPinjam></mat-datepicker>
@@ -62,9 +63,11 @@
             </mat-form-field>
             <br>
             <mat-form-field class="datepicker-width">
-              <input matInput  [matDatepickerFilter]="myFilter2" [matDatepicker]="tanggalJatuhTempo" placeholder="Tanggal Kembali" id="jatuhTempo"
+              <input matInput [matDatepickerFilter]="myFilter2" [matDatepicker]="tanggalJatuhTempo"
+                     placeholder="Tanggal Kembali" id="jatuhTempo"
                      formControlName="jatuhTempo" readonly>
-              <mat-datepicker-toggle matSuffix [for]="tanggalJatuhTempo"></mat-datepicker-toggle>
+              <mat-datepicker-toggle matSuffix [for]="tanggalJatuhTempo"
+                                     [disabled]="!inputPeminjamanForm.get('tanggalPinjam').valid"></mat-datepicker-toggle>
               <mat-datepicker #tanggalJatuhTempo></mat-datepicker>
               <mat-error
                 *ngIf="!inputPeminjamanForm.get('jatuhTempo').valid && inputPeminjamanForm.get('jatuhTempo').dirty">
@@ -73,9 +76,10 @@
             </mat-form-field>
 
             <div class="offset-9">
-              <button mat-raised-button color="primary" type="button" [disabled]="inputPeminjamanForm.invalid" (click)="onSubmit()">{{editMode? "Ubah": "Simpan"}}
+              <button mat-raised-button color="primary" type="button" [disabled]="inputPeminjamanForm.invalid"
+                      (click)="onSubmit()">{{editMode ? "Ubah" : "Simpan"}}
               </button>
-              <button mat-raised-button (click)="onReset()" type="button" >{{editMode ? "Kembali" : "Reset"}}</button>
+              <button mat-raised-button (click)="onReset()" type="button">{{editMode ? "Kembali" : "Reset"}}</button>
             </div>
           </form>
         </mat-card-content>
