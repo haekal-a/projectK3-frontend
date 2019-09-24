@@ -12,8 +12,9 @@ export class UtilService {
   }
 
   static periksaTanggal(tanggal: Date){
-    if (tanggal > new Date()) {
+    if (tanggal <= new Date()) {
       return true;
     }
   }
+
 }

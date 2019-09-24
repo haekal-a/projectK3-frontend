@@ -33,7 +33,6 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import { UserComponent } from './home/user/user.component';
-import { HistoriPinjamComponent } from './home/user/histori-pinjam/histori-pinjam.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { KonfirmasiComponent } from './home/user/konfirmasi/konfirmasi.component';
 import { InputPeminjamanComponent } from './pinjam/input/input-peminjaman.component';
@@ -44,7 +43,7 @@ import { DaftarBarangComponent } from './pinjam/input/daftar-barang/daftar-baran
 import { KembaliComponent } from './pinjam/kembali/kembali.component';
 import {PersetujuanService} from "./service/persetujuan.service";
 import {DummyService} from "./service/dummy/dummy.service";
-import {PinjamService} from "./pinjam/pinjam.service";
+import {PinjamService} from "./service/pinjam.service";
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import {PersetujuanComponent} from "./pinjam/persetujuan/persetujuan.component";
 import { RejectDialogComponent } from './util/reject-dialog/reject-dialog.component';
@@ -66,7 +65,10 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {UtilService} from "./util/util.service";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {PengembalianService} from "./service/pengembalian.service";
-
+import {MonitoringService} from "./service/monitoring.service";
+import { StatusPeminjamanPipe } from './pipes/status-peminjaman.pipe';
+import {DatePipe} from "@angular/common";
+import {HistoriPinjamComponent} from './home/user/histori-pinjam/histori-pinjam.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,6 @@ import {PengembalianService} from "./service/pengembalian.service";
     NotifikasiComponent,
     DaftarPinjamAdminComponent,
     UserComponent,
-    HistoriPinjamComponent,
     RegisterComponent,
     KonfirmasiComponent,
     InputPeminjamanComponent,
@@ -99,6 +100,8 @@ import {PengembalianService} from "./service/pengembalian.service";
     HistoriBarangComponent,
     DialogPencarianComponent,
     KondisiPipe,
+    StatusPeminjamanPipe,
+    HistoriPinjamComponent
   ],
   entryComponents: [RejectDialogComponent, TanggalTerimaDialogComponent, ConfirmBootboxComponent, DialogPencarianComponent],
   imports: [
@@ -141,7 +144,9 @@ import {PengembalianService} from "./service/pengembalian.service";
     UserService,
     RegisterService,
     PengembalianService,
-    UtilService
+    UtilService,
+    MonitoringService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
